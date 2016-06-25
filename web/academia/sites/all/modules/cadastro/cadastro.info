@@ -1,0 +1,9 @@
+name = Cadastro MMDA
+description = Módulo para teste de cadastro para a MMDA
+core = 7.x
+; criado por Alberto Medeiros 07/06/2016 - 18:55
+version = "7.x-1.3"
+core = "7.x"
+project = "mmda"
+datestamp = "1335213673"
+

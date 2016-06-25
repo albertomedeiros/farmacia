@@ -1,0 +1,40 @@
+<?php
+
+/**
+ * Conterá a instalação do módulo
+ * 
+ * @author Alberto Medeiros <albertomedeiros214@gmail.com>
+ */
+
+/**
+ * Implements hook_schema().
+ */
+function cadastro_schema() {
+  $schema['cadastro'] = array(
+    'description' => 'Tabela de cadastro.',
+    'fields' => array(
+      'id' => array(
+        'description' => 'Auto increment para o cadastro.',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'nome' => array(
+        'description' => 'Nome do usuário do cadastro',
+        'type' => 'varchar',
+        'length' => 20,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+      'sobrenome' => array(
+        'description' => 'Sobrenome do usuário do cadastro.',
+        'type' => 'varchar',
+        'length' => 50,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+    ),
+    'primary key' => array('id'),
+  );
+  return $schema;
+}

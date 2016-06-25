@@ -1,0 +1,72 @@
+<?php
+/**
+ * Arquivo que conterá os hooks do modulo usuarios
+ * 
+ * @author Alberto Medeiros
+ */
+
+// Incluindo os arquivos
+//module_load_include('inc', 'usuarios', 'usuarios');
+
+function usuarios_node_insert($node){
+    
+    
+}
+
+function usuarios_form_alter(&$form, &$form_state, $form_id){
+    
+    if ($form_id == "user_register_form" || $form_id == "user_profile_form" || $form_id ==  "business_node_form" ){
+        
+        // Pegando o user logado
+        global $user;
+        // Lendo o usuário
+        $user = user_load($user->uid);
+        
+        if(!in_array("administrator", $user->roles)){
+            
+            $form['actions']["buttons"] = array(
+                "#type" => "button",
+                '#value' => t('Próximo'),
+                '#weight' => 98
+            );
+            $form['actions']["buttons"]['#attributes'] = array("class" => array("btn-proximo"));
+
+            if($form_id == "user_profile_form"){
+                $form['actions']['perfil'] = array(
+                    '#markup' => '<a href="/user" class="form-submit btn btn-primary perfil">Perfil</a>', 
+                    '#weight' => 99
+                );
+            }
+            
+            // Caso seja registro de usuário
+            if(isset($_GET["cadastro"]) && $form_id == "user_register_form"){
+                // Caso o cadastro seja de fornecedor seto o tipo do usuário
+                $form["field_tipo_de_usuario"]["und"]["#default_value"] = 72;
+            }
+            
+            // Escondendo os campos necessários
+            $form["field_tipo_de_usuario"]["#access"] = false;
+            $form["field_token_facebook"]["#access"] = false;
+            $form["field_id_facebook"]["#access"] = false;
+            
+        }
+    }
+    
+}
+
+function usuario_user_insert(&$edit, $account, $category){
+    
+    // Pegando o user logado
+    global $user;
+    // Lendo o usuário
+    $user = user_load($user->uid);
+    
+    // Caso o usuário seja do tipo fornecedor
+    if($user->field_tipo_de_usuario[key($user->field_tipo_de_usuario)][0]["tid"] = 72){
+        // Setando a permissão
+        $user->roles[] = "fornecedores";
+        
+        // Salvando o usuário
+        user_save($user);
+    }
+}

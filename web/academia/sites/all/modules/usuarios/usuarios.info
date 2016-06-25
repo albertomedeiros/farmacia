@@ -1,0 +1,5 @@
+name = Cadastro de Usuários
+description = Módulo que irá conter as funcionalidades de cadastrar usuário
+core = 7.x
+package = custom
+

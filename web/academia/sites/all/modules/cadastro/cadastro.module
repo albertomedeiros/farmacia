@@ -1,0 +1,54 @@
+<?php
+/**
+ * Módulo criado para realizar os testes do 
+ * 
+ * @author Alberto Medeiros <albertomedeiros214@gmail.com>
+ */
+
+// Incluindo os arquivos
+module_load_include('inc', 'cadastro', 'cadastro');
+
+$path_module = drupal_get_path('module', 'cadastro');
+//drupal_add_js($path_module.'/cadastro.js');
+
+function amigos_theme(){
+    
+    $strPath = drupal_get_path("module", "cadastro");
+    
+    return array(
+        'cadastro' => array(
+            "template" => "cadastro",
+            "path" => "$strPath/tema",
+        ),
+    );  
+}
+
+/**
+ * Irá montar o menu do módulo
+ * 
+ * @return array
+ */
+function cadastro_menu(){
+    $items = array();
+    $items['cadastro'] = array(
+        'title' => 'Cadastro',
+        'page callback' => 'cadastro',
+        'menu_name' => 'main-menu',  // This is the changed line.
+        'type' => MENU_NORMAL_ITEM,
+        'access arguments' => array('access content'),
+        'file' => 'cadastro.inc',
+        'options' => array('attributes' => array('class' => array('cadastro'))),
+    );
+  
+  return $items;
+}
+
+/**
+ * Implements hook_page_build().
+ */
+function cadastro_page_build(&$page) {
+    
+ $path_module = drupal_get_path('module', 'cadastro');
+  drupal_add_js($path_module . '/cadastro.js', 'file');
+
+}
