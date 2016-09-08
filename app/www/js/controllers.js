@@ -10,10 +10,6 @@ angular.module('starter.controllers', [])
   //});
   // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
-    if (window.cordova && window.cordova.plugins.Keyboard) {
-      cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
-      cordova.plugins.Keyboard.disableScroll(true);
-    }
     if (window.StatusBar) {
       // org.apache.cordova.statusbar required
       StatusBar.styleDefault();
@@ -26,16 +22,6 @@ angular.module('starter.controllers', [])
       console.log(JSON.stringify(err));
     })
 
-    if (window.cordova && window.cordova.plugins.Keyboard) {
-      // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
-      // for form inputs)
-      cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
-
-      // Don't remove this line unless you know what you are doing. It stops the viewport
-      // from snapping when text inputs are focused. Ionic handles this internally for
-      // a much nicer keyboard experience.
-      cordova.plugins.Keyboard.disableScroll(true);
-    }
     if (window.StatusBar) {
       StatusBar.styleDefault();
     }
@@ -84,16 +70,16 @@ angular.module('starter.controllers', [])
 .controller('PlaylistsCtrl', function($scope, $http) {
     var setIntervalGoogle = setInterval(function(){
         if(objGetLocation != null){
-            console.log(objGetLocation);
+            strUrlGoogle = strUrlGoogle+objGetLocation.latitude+","+objGetLocation.longitude;
             window.clearInterval(setIntervalGoogle);
             // Acessando a url
-            $http.get(strUrlGoogle+objGetLocation.latitude+","+objGetLocation.longitude)
+            $http.get(strUrlGoogle)
             .then(function(response) {
                 // Recuperando o objeto
                 objEnderecoMap = response.data;
                 $scope.bairro = objEnderecoMap.results[0].address_components[2].long_name
                 $scope.cidade = objEnderecoMap.results[0].address_components[3].long_name
-            });
+            }).catch(function (data) { });;
         }else{
             console.log("ainda não");
         }
