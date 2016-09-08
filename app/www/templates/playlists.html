@@ -1,8 +1,21 @@
-<ion-view view-title="Playlists">
+<ion-view view-title="Buscar Rémedios">
   <ion-content>
+    <label class="item item-input">
+        <i class="icon ion-search placeholder-icon"></i>
+        <input type="search" placeholder="Buscar Remédios">
+    </label>
+    <label class="item item-input">
+        <p>Local Aproximado </p>
+    </label>
+    <label class="item item-input">
+        
+        <span> Bairro: {{bairro}} Cidade: {{cidade}}</span>
+    </label>
     <ion-list>
       <ion-item ng-repeat="playlist in playlists" href="#/app/playlists/{{playlist.id}}">
-        {{playlist.title}}
+          <b>Remédio:</b> {{playlist.remedio}} <br />
+          <b>Valor:</b> R$ {{playlist.valor}}  <br />
+          <b>Farmacia:</b> {{playlist.nome}}
       </ion-item>
     </ion-list>
   </ion-content>

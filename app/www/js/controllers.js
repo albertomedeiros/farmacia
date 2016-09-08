@@ -8,7 +8,48 @@ angular.module('starter.controllers', [])
   // listen for the $ionicView.enter event:
   //$scope.$on('$ionicView.enter', function(e) {
   //});
+  // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
+    // for form inputs)
+    if (window.cordova && window.cordova.plugins.Keyboard) {
+      cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+      cordova.plugins.Keyboard.disableScroll(true);
+    }
+    if (window.StatusBar) {
+      // org.apache.cordova.statusbar required
+      StatusBar.styleDefault();
+    }
+    
+    navigator.geolocation.getCurrentPosition(function(res) {
+        objGetLocation = res.coords
+    }, function(err) {
+      console.log("deu erro...");
+      console.log(JSON.stringify(err));
+    })
 
+    if (window.cordova && window.cordova.plugins.Keyboard) {
+      // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
+      // for form inputs)
+      cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+
+      // Don't remove this line unless you know what you are doing. It stops the viewport
+      // from snapping when text inputs are focused. Ionic handles this internally for
+      // a much nicer keyboard experience.
+      cordova.plugins.Keyboard.disableScroll(true);
+    }
+    if (window.StatusBar) {
+      StatusBar.styleDefault();
+    }
+            
+  // Lista de Remédios
+  $scope.playlists = [
+    {valor: 15.60, remedio: "Dipirona",      nome: 'Farmacia dos Pobres', id: 1 },
+    {valor: 6.35,  remedio: "Dipirona",      nome: 'Big Ben', id: 2 },
+    {valor: 7.4,   remedio: "Dorflex",       nome: 'Drogazil', id: 3 },
+    {valor: 6.38,  remedio: "Paracetamol",   nome: 'Americanas', id: 4 },
+    {valor: 13.45, remedio: "Refesnoc",      nome: 'Carrefour', id: 5 },
+    {valor: 11.60, remedio: "Gripazil",      nome: 'Bom Preço', id: 6 }
+  ];
+  
   // Form data for the login modal
   $scope.loginData = {};
 
@@ -40,17 +81,31 @@ angular.module('starter.controllers', [])
     }, 1000);
   };
 })
-
-.controller('PlaylistsCtrl', function($scope) {
-  $scope.playlists = [
-    { title: 'Reggae', id: 1 },
-    { title: 'Chill', id: 2 },
-    { title: 'Dubstep', id: 3 },
-    { title: 'Indie', id: 4 },
-    { title: 'Rap', id: 5 },
-    { title: 'Cowbell', id: 6 }
-  ];
+.controller('PlaylistsCtrl', function($scope, $http) {
+    var setIntervalGoogle = setInterval(function(){
+        if(objGetLocation != null){
+            console.log(objGetLocation);
+            window.clearInterval(setIntervalGoogle);
+            // Acessando a url
+            $http.get(strUrlGoogle+objGetLocation.latitude+","+objGetLocation.longitude)
+            .then(function(response) {
+                // Recuperando o objeto
+                objEnderecoMap = response.data;
+                $scope.bairro = objEnderecoMap.results[0].address_components[2].long_name
+                $scope.cidade = objEnderecoMap.results[0].address_components[3].long_name
+            });
+        }else{
+            console.log("ainda não");
+        }
+    }, 500);
 })
-
 .controller('PlaylistCtrl', function($scope, $stateParams) {
+    var intI = 0;
+    for(intI = 0 ; intI < $scope.playlists.length; intI++){
+        objAtual = $scope.playlists[intI];
+        if($stateParams.playlistId == objAtual.id){
+            $scope.objAtual = objAtual;
+            console.log(objAtual);
+        }        
+    }
 });
