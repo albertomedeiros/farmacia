@@ -1,5 +1,32 @@
-<ion-view view-title="{{objAtual.nome}}">
+<ion-view view-title="Realizar Pedido">
   <ion-content>
-    <h1>Playlist</h1>
+    <h1 style="text-align: center">{{objAtual.nome}}</h1>
+    <img src="{{objAtual.img}}" />
+    <label class="item">
+        Endereço: {{objAtual.endereco}}
+    </label>
+    <label class="item">
+        Horário de Atendimento: {{objAtual.endereco}}
+    </label>
+    <label class="item item-input">
+        <i class="icon ion-search placeholder-icon"></i>
+        <input type="search" placeholder="Buscar Remédios">
+    </label>
+    <label class="item" ng-show="{{finalizar}}">
+        <button class="button button-block button-positive" type="submit">Finalizar Pedido</button>
+    </label>
+    <ion-list style="height: 30%">
+      <ion-item ng-repeat="playlist in playlists" href="#/app/playlists/{{playlist.id}}">
+            <span style="float: left">
+                <b>Remédio:</b> {{playlist.remedio}} <br />
+                <b>Valor:</b> R$ {{playlist.valor}}  
+            </span>
+            <label>
+                <button style="float: right; margin-left: 5%" class="ion-android-add-circle"></button>
+                <button style="float: right" class="ion-android-remove-circle"></button>
+            </label>
+      </ion-item>
+    </ion-list>
+    
   </ion-content>
 </ion-view>

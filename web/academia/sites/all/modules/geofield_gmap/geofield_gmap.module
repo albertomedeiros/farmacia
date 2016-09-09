@@ -92,7 +92,7 @@ function geofield_gmap_field_widget_form(&$form, &$form_state, $field, $instance
     $element['#gmap_click_to_place_marker'] = $settings['click_to_place_marker'];
     $element['#after_build'] = array('geofield_gmap_widget_gmap_afterbuild');
 
-    drupal_add_js('//maps.googleapis.com/maps/api/js?sensor=false&key=AIzaSyAul495mYaHIWR4nAU5RpXHSz3ZX5sIXI0', array(
+    drupal_add_js('//maps.googleapis.com/maps/api/js?sensor=false&key=AIzaSyDI_UZM2fuu8DZ_yyJA04okwJhw7UYr0X4', array(
       'type' => 'external',
       'preprocess' => FALSE,
     ));

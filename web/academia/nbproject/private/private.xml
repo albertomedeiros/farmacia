@@ -3,7 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp2/htdocs/academia/sites/default/settings.php</file>
+            <file>file:/C:/wamp/www/projeto/web/academia/sites/all/modules/geofield/modules/geofield_map/geofield_map.module</file>
+            <file>file:/C:/wamp/www/projeto/web/academia/sites/all/modules/geofield/modules/geofield_map/includes/geofield_map_plugin_style_map.inc</file>
+            <file>file:/C:/wamp/www/projeto/web/academia/sites/all/modules/geofield_gmap/geofield_gmap.module</file>
+            <file>file:/C:/wamp/www/projeto/web/academia/sites/all/modules/ip_geoloc/ip_geoloc_api.inc</file>
         </group>
     </open-files>
 </project-private>

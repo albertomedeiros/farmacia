@@ -157,7 +157,7 @@ class geofield_map_plugin_style_map extends views_plugin_style {
       drupal_add_js(array('geofieldMap' => $js_settings), 'setting');
     }
 
-    drupal_add_js('//maps.googleapis.com/maps/api/js?sensor=false&key=AIzaSyAul495mYaHIWR4nAU5RpXHSz3ZX5sIXI0', 'external');
+    drupal_add_js('//maps.googleapis.com/maps/api/js?sensor=false&key=AIzaSyDI_UZM2fuu8DZ_yyJA04okwJhw7UYr0X4', 'external');
     drupal_add_js(drupal_get_path('module', 'geofield_map') . '/js/GeoJSON.js');
     drupal_add_js(drupal_get_path('module', 'geofield_map') . '/js/geofield_map.js');
     drupal_add_css(drupal_get_path('module', 'geofield_map') . '/css/geofield_map.css');

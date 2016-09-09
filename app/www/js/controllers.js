@@ -28,12 +28,12 @@ angular.module('starter.controllers', [])
             
   // Lista de Remédios
   $scope.playlists = [
-    {valor: 15.60, remedio: "Dipirona",      nome: 'Farmacia dos Pobres', id: 1 },
-    {valor: 6.35,  remedio: "Dipirona",      nome: 'Big Ben', id: 2 },
-    {valor: 7.4,   remedio: "Dorflex",       nome: 'Drogazil', id: 3 },
-    {valor: 6.38,  remedio: "Paracetamol",   nome: 'Americanas', id: 4 },
-    {valor: 13.45, remedio: "Refesnoc",      nome: 'Carrefour', id: 5 },
-    {valor: 11.60, remedio: "Gripazil",      nome: 'Bom Preço', id: 6 }
+    {valor: 15.60, img : "http://tecnomundoandroid.com.br/wp-content/uploads/2015/10/iFood-Delivery.png", remedio: "Dipirona",      nome: 'Farmacia dos Pobres', id: 1 },
+    {valor: 6.35,  img : "http://tecnomundoandroid.com.br/wp-content/uploads/2015/10/iFood-Delivery.png", remedio: "Dipirona",      nome: 'Big Ben', id: 2 },
+    {valor: 7.4,   img : "http://tecnomundoandroid.com.br/wp-content/uploads/2015/10/iFood-Delivery.png", remedio: "Dorflex",       nome: 'Drogazil', id: 3 },
+    {valor: 6.38,  img : "http://tecnomundoandroid.com.br/wp-content/uploads/2015/10/iFood-Delivery.png", remedio: "Paracetamol",   nome: 'Americanas', id: 4 },
+    {valor: 13.45, img : "http://tecnomundoandroid.com.br/wp-content/uploads/2015/10/iFood-Delivery.png", remedio: "Refesnoc",      nome: 'Carrefour', id: 5 },
+    {valor: 11.60, img : "http://tecnomundoandroid.com.br/wp-content/uploads/2015/10/iFood-Delivery.png", remedio: "Gripazil",      nome: 'Bom Preço', id: 6 }
   ];
   
   // Form data for the login modal
@@ -77,6 +77,7 @@ angular.module('starter.controllers', [])
             .then(function(response) {
                 // Recuperando o objeto
                 objEnderecoMap = response.data;
+                console.log(objEnderecoMap);
                 $scope.bairro = objEnderecoMap.results[0].address_components[2].long_name
                 $scope.cidade = objEnderecoMap.results[0].address_components[3].long_name
             }).catch(function (data) { });;
@@ -94,4 +95,6 @@ angular.module('starter.controllers', [])
             console.log(objAtual);
         }        
     }
+    
+    $scope.finalizar = true;
 });

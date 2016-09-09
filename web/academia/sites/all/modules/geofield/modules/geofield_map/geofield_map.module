@@ -102,7 +102,7 @@ function geofield_map_field_formatter_view($entity_type, $entity, $field, $insta
     $element[0] = array(
       '#attached' => array(
         'js' => array(
-          '//maps.googleapis.com/maps/api/js?sensor=false&key=AIzaSyAul495mYaHIWR4nAU5RpXHSz3ZX5sIXI0' => array('type' => 'external'),
+          '//maps.googleapis.com/maps/api/js?sensor=false&key=AIzaSyDI_UZM2fuu8DZ_yyJA04okwJhw7UYr0X4' => array('type' => 'external'),
           drupal_get_path('module', 'geofield_map') . '/js/GeoJSON.js',
           drupal_get_path('module', 'geofield_map') . '/js/geofield_map.js',
           array('data' => array('geofieldMap' => $js_settings), 'type' => 'setting'),

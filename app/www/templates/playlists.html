@@ -2,20 +2,21 @@
   <ion-content>
     <label class="item item-input">
         <i class="icon ion-search placeholder-icon"></i>
-        <input type="search" placeholder="Buscar Remédios">
+        <input type="search" placeholder="Buscar Remédios e Farmacias">
+    </label>
+    <label>
+        <ion-checkbox ng-model="isChecked">Fazer Cotação?</ion-checkbox>
     </label>
     <label class="item item-input">
-        <p>Local Aproximado </p>
-    </label>
-    <label class="item item-input">
-        
         <span> Bairro: {{bairro}} Cidade: {{cidade}}</span>
     </label>
     <ion-list>
       <ion-item ng-repeat="playlist in playlists" href="#/app/playlists/{{playlist.id}}">
+          <img src="{{playlist.img}}" width="80" style="float: left; margin-right: 15px" />
+          <b>Farmacia:</b> {{playlist.nome}} <br />
           <b>Remédio:</b> {{playlist.remedio}} <br />
-          <b>Valor:</b> R$ {{playlist.valor}}  <br />
-          <b>Farmacia:</b> {{playlist.nome}}
+          <b>Valor:</b> R$ {{playlist.valor}}  
+          
       </ion-item>
     </ion-list>
   </ion-content>
