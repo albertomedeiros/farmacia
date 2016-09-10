@@ -1,0 +1,17 @@
+<ion-modal-view>
+    <ion-header-bar>
+        <h1 class="title">Carrinho</h1>
+    </ion-header-bar>
+    <ion-content>
+        <ion-list>
+            <ion-item ng-repeat="playlist in arrCarrinho">
+                <img src="{{playlist.img}}" width="80" style="float: left; margin-right: 15px" />
+                <b>Remédio:</b> {{playlist.remedio}} <br />
+                <b>Valor:</b> R$ {{playlist.valor}}  
+            </ion-item>
+        </ion-list>
+        <label class="item">
+          <button class="button button-block button-positive"   ng-click="closeModalCarrinho()"type="submit">Fechar</button>
+        </label>
+    </ion-content> 
+</ion-modal-view>

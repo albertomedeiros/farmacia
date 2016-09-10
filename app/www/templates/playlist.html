@@ -1,32 +1,35 @@
 <ion-view view-title="Realizar Pedido">
   <ion-content>
-    <h1 style="text-align: center">{{objAtual.nome}}</h1>
-    <img src="{{objAtual.img}}" />
-    <label class="item">
-        Endereço: {{objAtual.endereco}}
-    </label>
-    <label class="item">
-        Horário de Atendimento: {{objAtual.endereco}}
-    </label>
+<!--      <button class="button button-icon button-clear ion-android-cart" menu-toggle="right">
+      </button>-->
+    <h1 style="text-align: center">
+        {{objAtual.nome}} 
+    </h1>
+    <button style="float: right" type="button" ng-click="abrirCarrinho()"  class="button button-icon" >
+        <i class="ion-android-cart">{{intTotalCarrinho}}</i> - Carrinho
+    </button>
+    <button style="float: right" type="button" ng-click="abrirFarmacia()" class="button button-icon">
+        <i class="ion-information"></i> - Informações
+    </button>
+    <img src="{{objAtual.img}}"   style="width: 100%; height: 20%"/>
     <label class="item item-input">
         <i class="icon ion-search placeholder-icon"></i>
         <input type="search" placeholder="Buscar Remédios">
     </label>
-    <label class="item" ng-show="{{finalizar}}">
-        <button class="button button-block button-positive" type="submit">Finalizar Pedido</button>
-    </label>
+    <button  ng-show="finalizarCompra"  class="button button-block button-positive" type="submit">Finalizar Pedido</button>
     <ion-list style="height: 30%">
-      <ion-item ng-repeat="playlist in playlists" href="#/app/playlists/{{playlist.id}}">
+        <ion-item ng-repeat="playlist in playlists" href="#/app/playlists/{{playlist.id}}">
             <span style="float: left">
                 <b>Remédio:</b> {{playlist.remedio}} <br />
                 <b>Valor:</b> R$ {{playlist.valor}}  
             </span>
-            <label>
-                <button style="float: right; margin-left: 5%" class="ion-android-add-circle"></button>
-                <button style="float: right" class="ion-android-remove-circle"></button>
-            </label>
-      </ion-item>
+            <button type="button"   ng-click="addCarrinho(playlist.id)"  class="button button-icon"  style="float: right; margin-left: 5%">
+                <i class="ion-android-add-circle"></i>
+            </button>
+            <button  type="button"   ng-click="removerCarrinho()"   style="float: right" class="button button-icon">
+                <i class="ion-android-remove-circle"></i>
+            </button>
+        </ion-item>
     </ion-list>
-    
   </ion-content>
 </ion-view>
